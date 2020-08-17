@@ -8,8 +8,7 @@ mvn install -pl com.kq.mvn:common -amd
 mvn install -pl com.kq.mvn:account -am
 mvn install -pl com.kq.mvn:account -amd
 
-see:
-https://blog.csdn.net/kq1983/article/details/108057855
+
 
 
 
