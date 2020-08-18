@@ -10,6 +10,35 @@ mvn install -pl com.kq.mvn:account -amd
 
 
 
+1. 先mvn clean install
+再本地安装全量的包
+
+
+=============================================================================
+2. 然后修改common的内容
+
+3. 看account包
+3.1 先执行
+mvn clean
+mvn install -pl com.kq.mvn:account -amd
+然后看account包依赖的common包的内容是否变了
+这个时候的common里面的内容是不会变的
+
+3.2执行
+mvn clean
+mvn install -pl com.kq.mvn:account -am
+这个时候的common里面的内容是变了
+
+=============================================================================
+2. 然后修改common的内容
+
+3. 看account和order包的common
+3.1 先执行
+mvn clean
+mvn install -pl com.kq.mvn:common -amd
+然后看account和order包依赖的common包的内容是否变了
+这个时候的common里面的内容是会变的
+
 
 
 
