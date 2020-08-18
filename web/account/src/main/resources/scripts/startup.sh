@@ -98,4 +98,16 @@ export SPRING_CONFIG_LOCATION
 # 读取.vmoptions文件
 VM_OPTIONS=$( sed -e 's/[\r\n]/ /g' ${MY_BIN_DIR}/.vmoptions)
 
-${JAVA_EXECUTABLE} ${VM_OPTIONS} -cp ${MY_SERVICES_DIR}/'*':${MY_LIBS_DIR}/'*' ${MAIN_CLASS}
+ps -ef | grep ${MAIN_CLASS}  | grep -v grep
+if [ $? -eq 0 ]
+then
+        echo "$MAIN_CLASS is running...."
+        ps -ef | grep ${MAIN_CLASS}  | grep -v grep | awk '{print $2}'  | xargs kill -9;
+        echo 'kill process result :'$?;
+fi
+
+${JAVA_EXECUTABLE} ${VM_OPTIONS} -cp ${MY_SERVICES_DIR}/'*':${MY_LIBS_DIR}/'*' ${MAIN_CLASS} &
+# nohup ${JAVA_PATH}/java -jar ${LOCAL_JAR_PATH}/${APPNAME}.jar > /dev/null 2>&1 &
+echo "${MAIN_CLASS} PID=$!";
+
+
