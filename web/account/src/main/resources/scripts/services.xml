@@ -1,0 +1,9 @@
+<service>
+    <id>account</id>
+    <name>My Manager Service</name>
+    <description>用户管理系统</description>
+    <env name="ACCOUNT_HOME" value="%BASE%"/>
+    <executable>startup.bat</executable>
+    <arguments></arguments>
+    <logmode>none</logmode>
+</service>

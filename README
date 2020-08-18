@@ -43,3 +43,6 @@ mvn install -pl com.kq.mvn:common -amd
 
 
 
+=============================================================================
+访问:
+http://localhost:10000/account/view/${id}

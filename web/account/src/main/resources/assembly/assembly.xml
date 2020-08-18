@@ -1,0 +1,56 @@
+<assembly xmlns="http://maven.apache.org/ASSEMBLY/2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/ASSEMBLY/2.0.0 http://maven.apache.org/xsd/assembly-2.0.0.xsd
+http://maven.apache.org/ASSEMBLY/2.0.0 ">
+    <id>assembly</id>
+    <baseDirectory>account</baseDirectory>
+    <formats>
+        <format>tar.gz</format>
+        <!--<format>dir</format>-->
+    </formats>
+
+    <dependencySets>
+        <dependencySet>
+            <excludes>
+                <exclude>com.kq.*:*</exclude>
+            </excludes>
+            <outputDirectory>/libs</outputDirectory>
+        </dependencySet>
+        <dependencySet>
+            <includes>
+                <include>com.kq.*:*</include>
+            </includes>
+            <outputDirectory>/services</outputDirectory>
+        </dependencySet>
+    </dependencySets>
+
+    <fileSets>
+        <fileSet>
+            <directory>src/main/resources/scripts</directory>
+            <outputDirectory>/bin</outputDirectory>
+            <includes>
+                <include>*.bat</include>
+                <include>*.xml</include>
+                <include>*.sh</include>
+                <include>*.exe</include>
+                <include>*.vmoptions</include>
+            </includes>
+            <fileMode>0755</fileMode>
+        </fileSet>
+        <fileSet>
+            <directory>src/main/resources</directory>
+            <outputDirectory>/conf</outputDirectory>
+            <includes>
+                <include>*.yml</include>
+            </includes>
+            <fileMode>0644</fileMode>
+        </fileSet>
+    </fileSets>
+
+    <files>
+        <file>
+            <source>README</source>
+            <outputDirectory>/</outputDirectory>
+        </file>
+    </files>
+
+</assembly>

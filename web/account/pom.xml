@@ -12,5 +12,56 @@
     <artifactId>account</artifactId>
 
 
+    <build>
+        <plugins>
+            <!-- 只要自己class打包，不要用spring-boot-maven-plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <addClasspath>true</addClasspath>
+                            <!--<classpathPrefix>../lib/</classpathPrefix>-->
+                            <mainClass>com.kq.mvn.acccount.AccountApplication</mainClass>
+                        </manifest>
+                        <!--<manifestEntries>-->
+                        <!--<Class-Path>/resources</Class-Path>-->
+                        <!--</manifestEntries>-->
+                    </archive>
+                    <excludes>
+                        <exclude>*.yml</exclude>
+                        <exclude>*.bat</exclude>
+                        <exclude>*.vmoptions</exclude>
+                        <exclude>scripts/</exclude>
+                    </excludes>
+                    <!--<outputDirectory>${project.build.directory}/${artifactId}/bin</outputDirectory>-->
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <configuration>
+                    <finalName>${artifactId}</finalName>
+                    <appendAssemblyId>false</appendAssemblyId>
+                    <descriptors>
+                        <descriptor>src/main/resources/assembly/assembly.xml</descriptor>
+                    </descriptors>
+                </configuration>
+
+                <executions>
+                    <execution>
+                        <id>make-assembly</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
 
 </project>
