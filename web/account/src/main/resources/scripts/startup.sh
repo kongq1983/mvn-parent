@@ -106,8 +106,8 @@ then
         echo 'kill process result :'$?;
 fi
 
-${JAVA_EXECUTABLE} ${VM_OPTIONS} -cp ${MY_SERVICES_DIR}/'*':${MY_LIBS_DIR}/'*' ${MAIN_CLASS} &
+nohup ${JAVA_EXECUTABLE} ${VM_OPTIONS} -cp ${MY_SERVICES_DIR}/'*':${MY_LIBS_DIR}/'*' ${MAIN_CLASS} > /dev/null 2>&1 &
 # nohup ${JAVA_PATH}/java -jar ${LOCAL_JAR_PATH}/${APPNAME}.jar > /dev/null 2>&1 &
-echo "${MAIN_CLASS} PID=$!";
+echo "PID=$!";
 
 
